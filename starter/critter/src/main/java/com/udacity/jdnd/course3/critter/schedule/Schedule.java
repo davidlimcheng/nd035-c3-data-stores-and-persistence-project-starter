@@ -20,10 +20,10 @@ public class Schedule {
     private LocalDate date;
 
     @ManyToMany
-    private List<Employee> employees;
+    private Set<Employee> employees;
 
     @ManyToMany
-    private List<Pet> pets;
+    private Set<Pet> pets;
 
     @ElementCollection
     private Set<EmployeeSkill> activities;
@@ -36,19 +36,19 @@ public class Schedule {
         this.id = id;
     }
 
-    public List<Employee> getEmployees() {
+    public Set<Employee> getEmployees() {
         return employees;
     }
 
-    public void setEmployees(List<Employee> employees) {
+    public void setEmployees(Set<Employee> employees) {
         this.employees = employees;
     }
 
-    public List<Pet> getPets() {
+    public Set<Pet> getPets() {
         return pets;
     }
 
-    public void setPets(List<Pet> pets) {
+    public void setPets(Set<Pet> pets) {
         this.pets = pets;
     }
 

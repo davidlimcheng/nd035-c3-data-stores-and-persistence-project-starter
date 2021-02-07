@@ -4,8 +4,10 @@ import com.udacity.jdnd.course3.critter.schedule.Schedule;
 import com.udacity.jdnd.course3.critter.user.Customer;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table
@@ -14,16 +16,16 @@ public class Pet {
     @GeneratedValue
     private long id;
 
-    private PetType petType;
+    private PetType type;
     private String name;
     private String notes;
-    private LocalDateTime birthDate;
+    private LocalDate birthDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Customer customer;
+    private Customer owner;
 
     @ManyToMany
-    private List<Schedule> schedules;
+    private Set<Schedule> schedules;
 
     public long getId() {
         return id;
@@ -33,12 +35,12 @@ public class Pet {
         this.id = id;
     }
 
-    public PetType getPetType() {
-        return petType;
+    public PetType getType() {
+        return type;
     }
 
-    public void setPetType(PetType petType) {
-        this.petType = petType;
+    public void setType(PetType type) {
+        this.type = type;
     }
 
     public String getName() {
@@ -57,27 +59,27 @@ public class Pet {
         this.notes = notes;
     }
 
-    public LocalDateTime getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(LocalDateTime birthDate) {
+    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public Customer getOwner() {
+        return owner;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setOwner(Customer owner) {
+        this.owner = owner;
     }
 
-    public List<Schedule> getSchedules() {
+    public Set<Schedule> getSchedules() {
         return schedules;
     }
 
-    public void setSchedules(List<Schedule> schedules) {
+    public void setSchedules(Set<Schedule> schedules) {
         this.schedules = schedules;
     }
 }

@@ -4,6 +4,7 @@ import com.udacity.jdnd.course3.critter.pet.Pet;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table
@@ -16,8 +17,8 @@ public class Customer {
     private String phoneNumber;
     private String notes;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Pet> pets;
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<Pet> pets;
 
     public long getId() {
         return id;
@@ -51,11 +52,12 @@ public class Customer {
         this.notes = notes;
     }
 
-    public List<Pet> getPets() {
+    public Set<Pet> getPets() {
         return pets;
     }
 
-    public void setPets(List<Pet> pets) {
+    public void setPets(Set<Pet> pets) {
         this.pets = pets;
     }
+
 }
