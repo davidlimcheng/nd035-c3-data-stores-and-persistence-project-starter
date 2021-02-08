@@ -33,4 +33,9 @@ public class PetService {
     public List<Pet> findAllByOwnerId(long ownerId) {
         return petRepository.findAllByOwnerId(ownerId);
     }
+
+    @Transactional
+    public List<Pet> findAll() {
+        return petRepository.findAll();
+    }
 }

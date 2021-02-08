@@ -7,10 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -48,6 +45,9 @@ public class ScheduleService {
             schedules.addAll(petSchedules);
         });
 
-        return new ArrayList<>(schedules);
+        List<Schedule> returningSchedules = new ArrayList<>(schedules);
+        returningSchedules.sort(Comparator.comparingLong(Schedule::getId));
+
+        return returningSchedules;
     }
 }

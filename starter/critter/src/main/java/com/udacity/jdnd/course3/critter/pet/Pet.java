@@ -16,12 +16,14 @@ public class Pet {
     @GeneratedValue
     private long id;
 
+    @Column(name = "type")
     private PetType type;
+
     private String name;
     private String notes;
     private LocalDate birthDate;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Customer owner;
 
     @ManyToMany
